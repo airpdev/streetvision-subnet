@@ -1,0 +1,33 @@
+# Training dependencies for StreetVision miner.
+# Install in a separate venv on your A100 box (do NOT mix with the runtime miner venv):
+#   python3.11 -m venv venv-train && source venv-train/bin/activate
+#   pip install -r training/requirements.txt
+#
+# Tested on CUDA 12.1, Python 3.11, 2x A100 40GB.
+
+# Core DL stack (CUDA 12.1 wheels by default on PyPI for these versions)
+torch>=2.4.0
+torchvision>=0.19.0
+
+# HuggingFace stack
+transformers>=4.45.0
+datasets>=3.0.0
+accelerate>=0.34.0
+safetensors>=0.4.5
+huggingface_hub>=0.25.0
+evaluate>=0.4.3
+
+# Image augmentation (much faster + richer than torchvision)
+albumentations>=1.4.18
+opencv-python-headless>=4.10.0.84
+
+# Metrics + utils
+scikit-learn>=1.5.2
+numpy>=1.26.0,<3.0.0
+pillow>=10.4.0
+tqdm>=4.66.0
+pyarrow>=17.0.0
+pandas>=2.2.0
+
+# Optional: experiment tracking
+wandb>=0.18.0; python_version >= "3.10"
